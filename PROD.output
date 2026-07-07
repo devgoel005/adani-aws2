@@ -1,1 +1,25 @@
+output "all_s3_bucket_ids" {
+  description = "Map of S3 bucket IDs created by the NR-Netra PROD project."
+  value       = { for key, instance in module.s3 : key => instance.bucket_id }
+}
+
+output "all_s3_bucket_arns" {
+  description = "Map of S3 bucket ARNs created by the NR-Netra PROD project."
+  value       = { for key, instance in module.s3 : key => instance.bucket_arn }
+}
+
+output "all_lambda_function_names" {
+  description = "Map of Lambda function names created by the NR-Netra PROD project."
+  value       = { for key, instance in module.lambda : key => instance.function_name }
+}
+
+output "all_lambda_function_arns" {
+  description = "Map of Lambda function ARNs created by the NR-Netra PROD project."
+  value       = { for key, instance in module.lambda : key => instance.function_arn }
+}
+
+output "all_lambda_role_arns" {
+  description = "Map of Lambda execution role ARNs created by the NR-Netra PROD project."
+  value       = { for key, instance in module.lambda : key => instance.role_arn }
+}
 
