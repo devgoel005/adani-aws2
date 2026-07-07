@@ -1,0 +1,31 @@
+s3_configs = {
+  prod_data_bucket = {
+    bucket_name        = "nr-netra-prod-data-bucket"
+    acl                = "private"
+    force_destroy      = false
+    versioning_enabled = true
+    access_logs_bucket = "nr-netra-prod-logs-bucket"
+    policy             = ""
+    kms_master_key_id  = ""
+    bucket_key_enabled = false
+    public_access_block = null
+    cors_rules         = []
+    website            = null
+    ownership_controls = null
+    lifecycle_rules = [
+      {
+        id    = "expire-old-objects"
+        enabled = true
+        prefix = ""
+        expiration = { days = 365 }
+        noncurrent_version_expiration = { days = 365 }
+      }
+    ]
+    tags = {
+      Project            = "NR-Netra"
+      Environment        = "PROD"
+      DataClassification = "Restricted"
+      Team               = "Platform"
+    }
+  }
+}
